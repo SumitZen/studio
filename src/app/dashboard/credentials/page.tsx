@@ -153,8 +153,8 @@ export default function CredentialsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {credentials.map((credential) => (
-                <TableRow key={credential.name}>
+              {credentials.map((credential, index) => (
+                <TableRow key={`${credential.name}-${index}`}>
                   <TableCell className="font-medium">
                     {credential.name}
                   </TableCell>
