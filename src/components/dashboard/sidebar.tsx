@@ -1,8 +1,10 @@
+
 import Link from 'next/link';
 import {
   Home,
   Settings,
-  LayoutGrid
+  LayoutGrid,
+  FileText
 } from 'lucide-react';
 
 import {
@@ -41,13 +43,25 @@ export function DashboardSidebar() {
           <TooltipTrigger asChild>
             <Link
               href="/dashboard"
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
             >
               <LayoutGrid className="h-5 w-5" />
               <span className="sr-only">Dashboard</span>
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right">Dashboard</TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              href="/dashboard/credentials"
+              className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+            >
+              <FileText className="h-5 w-5" />
+              <span className="sr-only">Credentials</span>
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right">Credentials</TooltipContent>
         </Tooltip>
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">

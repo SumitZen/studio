@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import {
   Bell,
@@ -11,6 +12,7 @@ import {
   ShoppingCart,
   Users,
   LayoutGrid,
+  FileText
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -62,10 +64,17 @@ export function DashboardHeader() {
             </Link>
             <Link
               href="/dashboard"
-              className="flex items-center gap-4 px-2.5 text-foreground"
+              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <LayoutGrid className="h-5 w-5" />
               Dashboard
+            </Link>
+             <Link
+              href="/dashboard/credentials"
+              className="flex items-center gap-4 px-2.5 text-foreground"
+            >
+              <FileText className="h-5 w-5" />
+              Credentials
             </Link>
           </nav>
         </SheetContent>
