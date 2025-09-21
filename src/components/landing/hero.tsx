@@ -20,11 +20,11 @@ export function Hero() {
       />
       <div className="container relative mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4">
         <div className="text-center lg:text-left">
-            <span className="text-xl font-bold tracking-tight text-primary">CREDENTIALSHUB</span>
+            <span className="text-lg sm:text-xl font-bold tracking-tight text-primary">CREDENTIALHUB</span>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl mt-4">
             Keep All Your Credentials In One Place
             </h1>
-            <p className="mt-6 text-2xl text-muted-foreground">
+            <p className="mt-6 text-lg sm:text-2xl text-muted-foreground">
             View. Track. Verify.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-x-6 gap-y-4">
