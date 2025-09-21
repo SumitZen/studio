@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-dashboard",
-      "description": "An abstract, modern tech illustration representing secure document management.",
-      "imageUrl": "https://picsum.photos/seed/secure-docs/1200/800",
-      "imageHint": "secure documents abstract"
+      "description": "A modern, tech-focused image representing a secure digital hub for documents and credentials.",
+      "imageUrl": "https://picsum.photos/seed/digital-hub/1200/800",
+      "imageHint": "secure technology"
     },
     {
       "id": "trust-security-illustration",
