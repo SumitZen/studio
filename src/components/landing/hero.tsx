@@ -8,11 +8,19 @@ export function Hero() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-dashboard");
 
   return (
-    <section className="py-20 sm:py-32">
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative py-20 sm:py-32">
+       <div
+          aria-hidden="true"
+          className="absolute inset-0 top-0 z-0 bg-gradient-to-b from-background to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 z-0 h-48 bg-gradient-to-t from-background to-transparent"
+        />
+      <div className="container relative mx-auto px-4 text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
           Your Credentials,{" "}
-          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-primary via-purple-500 to-red-500 bg-clip-text text-transparent">
             Organized & Verified
           </span>
         </h1>
@@ -29,14 +37,14 @@ export function Hero() {
 
         {heroImage && (
           <div className="mt-16 sm:mt-24">
-            <div className="rounded-xl bg-white/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-primary/20">
+            <div className="rounded-xl bg-secondary/50 p-2 ring-1 ring-inset ring-border lg:rounded-2xl lg:p-4 shadow-2xl shadow-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-primary/20">
               <Image
                 src={heroImage.imageUrl}
                 alt={heroImage.description}
                 data-ai-hint={heroImage.imageHint}
                 width={1200}
                 height={800}
-                className="rounded-lg shadow-2xl ring-1 ring-gray-900/10"
+                className="rounded-lg shadow-2xl ring-1 ring-border"
                 priority
               />
             </div>

@@ -1,6 +1,5 @@
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -68,16 +67,14 @@ export function Features() {
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <Card key={feature.title} className="flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/20 bg-card backdrop-blur-lg">
+            <Card key={feature.title} className="flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/20 bg-secondary/50 backdrop-blur-lg">
               <CardHeader className="flex flex-row items-center gap-4 pb-4">
                 <div className="bg-primary/10 p-3 rounded-full">
                    <feature.icon className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>{feature.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription>{feature.description}</CardDescription>
-              </CardContent>
+              <CardDescription className="p-6 pt-0">{feature.description}</CardDescription>
             </Card>
           ))}
         </div>
