@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-dashboard",
-      "description": "A modern, tech-focused image representing a secure digital hub for documents and credentials.",
-      "imageUrl": "https://picsum.photos/seed/safedata/1200/800",
-      "imageHint": "data security"
+      "description": "A modern, tech-focused image of a data center, representing a secure digital hub for documents and credentials.",
+      "imageUrl": "https://picsum.photos/seed/datacenter/1200/800",
+      "imageHint": "data center"
     },
     {
       "id": "trust-security-illustration",
