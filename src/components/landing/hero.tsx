@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-dashboard");
@@ -19,8 +20,10 @@ export function Hero() {
           CredentialHub is the secure, modern platform for managing and showcasing your educational and professional achievements with confidence.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
-          <Button size="lg">
-            Get Started for Free <ArrowRight className="ml-2 h-5 w-5" />
+          <Button size="lg" asChild>
+            <Link href="/login">
+              Get Started for Free <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </div>
 

@@ -34,8 +34,12 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost">Sign In</Button>
-          <Button>Get Started</Button>
+          <Button variant="ghost" asChild>
+            <Link href="/login">Sign In</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/login">Get Started</Link>
+          </Button>
         </div>
         <div className="md:hidden">
           <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
@@ -57,8 +61,12 @@ export function Header() {
               </Link>
             ))}
             <div className="flex flex-col gap-2 pt-2 border-t">
-              <Button variant="ghost">Sign In</Button>
-              <Button>Get Started</Button>
+              <Button variant="ghost" asChild>
+                <Link href="/login">Sign In</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/login">Get Started</Link>
+              </Button>
             </div>
           </div>
         </div>

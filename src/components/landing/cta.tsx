@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function Cta() {
   return (
@@ -16,8 +17,9 @@ export function Cta() {
               <Button
                 size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                asChild
               >
-                Get Started for Free
+                <Link href="/login">Get Started for Free</Link>
               </Button>
             </div>
           </div>
