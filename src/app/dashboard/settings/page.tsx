@@ -53,7 +53,7 @@ export default function SettingsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             <div className="md:col-span-1 flex flex-col items-center gap-4">
                <Avatar className="h-32 w-32">
-                <AvatarImage src="https://picsum.photos/seed/user-avatar/200" alt="User Avatar" />
+                <AvatarImage src="https://picsum.photos/seed/user-avatar/200" alt="User Avatar" data-ai-hint="profile picture" />
                 <AvatarFallback>
                   <User className="h-16 w-16" />
                 </AvatarFallback>

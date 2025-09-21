@@ -71,7 +71,7 @@ export default function CredentialsPage() {
       </div>
 
       <Card className="shadow-lg">
-        <CardHeader className="flex flex-row items-center justify-between">
+        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <CardTitle>Your Documents</CardTitle>
             <CardDescription>
@@ -147,8 +147,8 @@ export default function CredentialsPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>Credential</TableHead>
-                <TableHead>Issuer</TableHead>
-                <TableHead>Date</TableHead>
+                <TableHead className="hidden sm:table-cell">Issuer</TableHead>
+                <TableHead className="hidden md:table-cell">Date</TableHead>
                 <TableHead>Status</TableHead>
               </TableRow>
             </TableHeader>
@@ -156,10 +156,11 @@ export default function CredentialsPage() {
               {credentials.map((credential, index) => (
                 <TableRow key={`${credential.name}-${index}`}>
                   <TableCell className="font-medium">
-                    {credential.name}
+                    <p>{credential.name}</p>
+                    <p className="text-muted-foreground sm:hidden">{credential.issuer}</p>
                   </TableCell>
-                  <TableCell>{credential.issuer}</TableCell>
-                  <TableCell>
+                  <TableCell className="hidden sm:table-cell">{credential.issuer}</TableCell>
+                  <TableCell className="hidden md:table-cell">
                     {new Date(credential.date).toLocaleDateString()}
                   </TableCell>
                   <TableCell>
