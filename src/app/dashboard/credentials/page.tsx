@@ -1,4 +1,7 @@
 
+'use client';
+
+import { useState } from 'react';
 import {
   Table,
   TableBody,
@@ -16,36 +19,48 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { FilePlus2 } from 'lucide-react';
+import { credentials as initialCredentials } from '@/lib/data';
 
-const credentials = [
-  {
-    name: 'Certified JavaScript Developer',
-    issuer: 'Tech University',
-    date: '2023-10-26',
-    status: 'Verified',
-  },
-  {
-    name: 'Advanced React Course',
-    issuer: 'Online Learning Platform',
-    date: '2023-08-15',
-    status: 'Verified',
-  },
-  {
-    name: 'Cloud Practitioner Certificate',
-    issuer: 'Cloud Services Inc.',
-    date: '2024-01-05',
-    status: 'Pending',
-  },
-  {
-    name: 'B.Sc. Computer Science',
-    issuer: 'State University',
-    date: '2022-05-20',
-    status: 'Verified',
-  },
-];
+type Credential = {
+  name: string;
+  issuer: string;
+  date: string;
+  status: 'Verified' | 'Pending';
+};
 
 export default function CredentialsPage() {
+  const [credentials, setCredentials] =
+    useState<Credential[]>(initialCredentials);
+  const [newCredential, setNewCredential] = useState({
+    name: '',
+    issuer: '',
+    date: '',
+  });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleAddCredential = () => {
+    if (newCredential.name && newCredential.issuer && newCredential.date) {
+      setCredentials([
+        ...credentials,
+        { ...newCredential, status: 'Pending' },
+      ]);
+      setNewCredential({ name: '', issuer: '', date: '' });
+      setIsDialogOpen(false);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -63,10 +78,69 @@ export default function CredentialsPage() {
               All your uploaded certificates and documents.
             </CardDescription>
           </div>
-          <Button>
-            <FilePlus2 className="mr-2" />
-            Upload Credential
-          </Button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button>
+                <FilePlus2 className="mr-2" />
+                Upload Credential
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add a New Credential</DialogTitle>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="name" className="text-right">
+                    Name
+                  </Label>
+                  <Input
+                    id="name"
+                    value={newCredential.name}
+                    onChange={(e) =>
+                      setNewCredential({ ...newCredential, name: e.target.value })
+                    }
+                    className="col-span-3"
+                    placeholder="e.g., Certified JavaScript Developer"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="issuer" className="text-right">
+                    Issuer
+                  </Label>
+                  <Input
+                    id="issuer"
+                    value={newCredential.issuer}
+                    onChange={(e) =>
+                      setNewCredential({ ...newCredential, issuer: e.target.value })
+                    }
+                    className="col-span-3"
+                    placeholder="e.g., Tech University"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="date" className="text-right">
+                    Date
+                  </Label>
+                  <Input
+                    id="date"
+                    type="date"
+                    value={newCredential.date}
+                    onChange={(e) =>
+                      setNewCredential({ ...newCredential, date: e.target.value })
+                    }
+                    className="col-span-3"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <Button onClick={handleAddCredential}>Add Credential</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </CardHeader>
         <CardContent>
           <Table>
