@@ -11,7 +11,7 @@ const steps: Step[] = [
   {
     icon: UserPlus,
     title: "Sign Up in Seconds",
-    description: "Create your secure Doclify account with just a few clicks. It's fast, free, and easy to get started.",
+    description: "Create your secure CredentialHub account with just a few clicks. It's fast, free, and easy to get started.",
   },
   {
     icon: FileUp,
