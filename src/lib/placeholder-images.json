@@ -3,13 +3,13 @@
     {
       "id": "hero-dashboard",
       "description": "A modern dashboard showcasing digital certificates and credentials.",
-      "imageUrl": "https://picsum.photos/seed/credikey-hero/1200/800",
+      "imageUrl": "https://picsum.photos/seed/doclify-hero/1200/800",
       "imageHint": "dashboard interface"
     },
     {
       "id": "trust-security-illustration",
       "description": "An abstract illustration representing data security and encryption.",
-      "imageUrl": "https://picsum.photos/seed/credikey-security/800/600",
+      "imageUrl": "https://picsum.photos/seed/doclify-security/800/600",
       "imageHint": "security abstract"
     }
   ]

@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'CrediKey | Your Credentials, Organized & Verified',
+  title: 'Doclify | Your Credentials, Organized & Verified',
   description: 'Store, manage, and showcase your educational and professional credentials securely.',
 };
 

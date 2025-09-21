@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <Logo />
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} CrediKey. All rights reserved.
+              &copy; {new Date().getFullYear()} Doclify. All rights reserved.
             </p>
           </div>
           <div className="flex items-center gap-6 text-sm">

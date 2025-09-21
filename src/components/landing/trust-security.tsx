@@ -34,7 +34,7 @@ export function TrustSecurity() {
               Your Trust is Our Top Priority
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              At CrediKey, we are committed to protecting your sensitive information with state-of-the-art security measures. Your credentials are safe, secure, and always under your control.
+              At Doclify, we are committed to protecting your sensitive information with state-of-the-art security measures. Your credentials are safe, secure, and always under your control.
             </p>
             <div className="mt-8 space-y-6">
                 {securityFeatures.map((feature) => (

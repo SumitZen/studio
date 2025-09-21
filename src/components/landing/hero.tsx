@@ -16,7 +16,7 @@ export function Hero() {
           </span>
         </h1>
         <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-          CrediKey is the secure, modern platform for managing and showcasing your educational and professional achievements with confidence.
+          Doclify is the secure, modern platform for managing and showcasing your educational and professional achievements with confidence.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Button size="lg">
