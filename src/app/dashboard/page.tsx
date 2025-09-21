@@ -16,8 +16,8 @@ export default function DashboardPage() {
           An overview of your professional profile.
         </p>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Card>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Total Credentials
@@ -29,7 +29,7 @@ export default function DashboardPage() {
             <p className="text-xs text-muted-foreground">+2 from last month</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Verified Skills</CardTitle>
             <ShieldCheck className="h-4 w-4 text-muted-foreground" />
@@ -39,7 +39,7 @@ export default function DashboardPage() {
             <p className="text-xs text-muted-foreground">+1 from last month</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Profile Views</CardTitle>
             <Eye className="h-4 w-4 text-muted-foreground" />
@@ -49,7 +49,7 @@ export default function DashboardPage() {
             <p className="text-xs text-muted-foreground">+5 in the last week</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Learning Hours</CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
@@ -63,7 +63,7 @@ export default function DashboardPage() {
         </Card>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card>
+        <Card className="transition-all duration-300 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Recent Activity</CardTitle>
             <CardDescription>
@@ -108,7 +108,7 @@ export default function DashboardPage() {
             </ul>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="transition-all duration-300 hover:shadow-lg">
           <CardHeader>
             <CardTitle>Opportunities</CardTitle>
             <CardDescription>
@@ -117,14 +117,14 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="p-4 rounded-lg bg-secondary/80 border border-border">
+              <div className="p-4 rounded-lg bg-secondary/80 border border-border transition-all duration-300 hover:bg-secondary">
                 <h4 className="font-semibold">Data Science Pathway</h4>
                 <p className="text-sm text-muted-foreground">
                   Based on your &quot;Python Basics&quot; certificate, this
                   learning path could be a great next step.
                 </p>
               </div>
-              <div className="p-4 rounded-lg bg-secondary/80 border border-border">
+              <div className="p-4 rounded-lg bg-secondary/80 border border-border transition-all duration-300 hover:bg-secondary">
                 <h4 className="font-semibold">Frontend Developer Role</h4>
                 <p className="text-sm text-muted-foreground">
                   A job opportunity at Tech Solutions Inc. matches your

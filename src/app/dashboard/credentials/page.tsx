@@ -55,7 +55,7 @@ export default function CredentialsPage() {
         </p>
       </div>
 
-      <Card>
+      <Card className="shadow-lg">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
             <CardTitle>Your Documents</CardTitle>

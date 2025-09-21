@@ -87,7 +87,7 @@ export function Features() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="flex flex-col h-full bg-card/50 backdrop-blur-lg border-border/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/20">
+              <Card className="flex flex-col h-full bg-card/50 backdrop-blur-lg border-border/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/20 shadow-lg">
                 <CardHeader className="flex flex-row items-center gap-4 pb-4">
                   <div className="bg-primary/10 p-3 rounded-full">
                      <feature.icon className="h-6 w-6 text-primary" />

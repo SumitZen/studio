@@ -23,7 +23,7 @@ export default function LoginPage() {
           </Link>
         </Button>
       </div>
-      <Card className="mx-auto w-full max-w-sm bg-card/80 backdrop-blur-lg">
+      <Card className="mx-auto w-full max-w-sm bg-card/80 backdrop-blur-lg shadow-2xl shadow-primary/10">
         <CardHeader>
           <div className="flex justify-center mb-4">
             <Logo />
