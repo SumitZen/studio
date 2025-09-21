@@ -1,5 +1,8 @@
 
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Bell,
   CircleUser,
@@ -29,8 +32,17 @@ import {
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Logo } from '../logo';
+import { cn } from '@/lib/utils';
 
 export function DashboardHeader() {
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: '/dashboard', label: 'Dashboard' },
+    { href: '/dashboard/credentials', label: 'Credentials' },
+    { href: '#', label: 'Settings' },
+  ];
+
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -41,24 +53,20 @@ export function DashboardHeader() {
           <Logo />
           <span className="sr-only">CredentialHub</span>
         </Link>
-        <Link
-          href="/dashboard"
-          className="text-foreground transition-colors hover:text-foreground"
-        >
-          Dashboard
-        </Link>
-        <Link
-          href="/dashboard/credentials"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Credentials
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Settings
-        </Link>
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+              'transition-colors hover:text-foreground px-3 py-2 rounded-md',
+              pathname === link.href
+                ? 'bg-accent text-accent-foreground'
+                : 'text-muted-foreground'
+            )}
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
       <Sheet>
         <SheetTrigger asChild>
@@ -76,21 +84,20 @@ export function DashboardHeader() {
               <Logo />
               <span className="sr-only">CredentialHub</span>
             </Link>
-            <Link href="/dashboard" className="hover:text-foreground">
-              Dashboard
-            </Link>
-            <Link
-              href="/dashboard/credentials"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Credentials
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Settings
-            </Link>
+            {navLinks.map((link) => (
+               <Link
+               key={link.href}
+               href={link.href}
+               className={cn(
+                 'transition-colors hover:text-foreground',
+                 pathname === link.href
+                   ? 'text-foreground'
+                   : 'text-muted-foreground'
+               )}
+             >
+               {link.label}
+             </Link>
+            ))}
           </nav>
         </SheetContent>
       </Sheet>
