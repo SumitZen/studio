@@ -58,6 +58,6 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-background to-primary/10 text-foreground;
   }
 }
