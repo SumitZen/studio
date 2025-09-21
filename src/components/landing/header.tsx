@@ -17,7 +17,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/">
           <Logo />
@@ -44,7 +44,7 @@ export function Header() {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden border-t">
+        <div className="md:hidden border-t bg-background/80 backdrop-blur-lg">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link

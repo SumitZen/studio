@@ -26,7 +26,7 @@ export function Hero() {
 
         {heroImage && (
           <div className="mt-16 sm:mt-24">
-            <div className="rounded-xl bg-white/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4 shadow-2xl">
+            <div className="rounded-xl bg-white/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl lg:p-4 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-primary/20">
               <Image
                 src={heroImage.imageUrl}
                 alt={heroImage.description}
