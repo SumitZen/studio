@@ -1,5 +1,6 @@
 import { UserPlus, FileUp, Share2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Step = {
   icon: LucideIcon;
@@ -27,7 +28,7 @@ const steps: Step[] = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 sm:py-32 bg-secondary">
+    <section id="how-it-works" className="py-20 sm:py-32 bg-secondary/50">
       <div className="container mx-auto px-4">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -37,25 +38,29 @@ export function HowItWorks() {
             Managing your credentials has never been easier.
           </p>
         </div>
-        <div className="relative mt-16">
+        <div className="relative mt-20">
           <div
             aria-hidden="true"
             className="absolute inset-0 hidden md:flex items-center"
           >
-            <div className="w-full border-t border-dashed border-gray-400" />
+            <div className="w-full border-t border-dashed border-border" />
           </div>
-          <div className="relative grid grid-cols-1 gap-12 md:grid-cols-3">
+          <div className="relative grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-8">
             {steps.map((step, index) => (
-              <div key={step.title} className="flex flex-col items-center text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-md ring-1 ring-border">
-                  <span className="text-2xl font-bold text-primary">{index + 1}</span>
+               <Card key={step.title} className="relative bg-card/50 backdrop-blur-lg border-border/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/20 shadow-lg text-center">
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg ring-8 ring-secondary/50">
+                  <span className="text-2xl font-bold">{index + 1}</span>
                 </div>
-                <div className="mt-6">
-                  <step.icon className="h-10 w-10 mx-auto text-primary" />
-                  <h3 className="mt-4 text-xl font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-muted-foreground">{step.description}</p>
-                </div>
-              </div>
+                <CardHeader className="pt-12">
+                   <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
+                    <step.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="mt-4">{step.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{step.description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
