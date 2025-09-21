@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardDescription,
@@ -13,6 +14,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
+
 
 type Feature = {
   icon: LucideIcon;
@@ -53,6 +56,15 @@ const features: Feature[] = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  },
+};
+
 export function Features() {
   return (
     <section id="features" className="py-20 sm:py-32">
@@ -66,16 +78,25 @@ export function Features() {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <Card key={feature.title} className="flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/20 bg-secondary/50 backdrop-blur-lg">
-              <CardHeader className="flex flex-row items-center gap-4 pb-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                   <feature.icon className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>{feature.title}</CardTitle>
-              </CardHeader>
-              <CardDescription className="p-6 pt-0">{feature.description}</CardDescription>
-            </Card>
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="flex flex-col h-full bg-card/50 backdrop-blur-lg border-border/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/20">
+                <CardHeader className="flex flex-row items-center gap-4 pb-4">
+                  <div className="bg-primary/10 p-3 rounded-full">
+                     <feature.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                </CardHeader>
+                <CardDescription className="p-6 pt-0">{feature.description}</CardDescription>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
