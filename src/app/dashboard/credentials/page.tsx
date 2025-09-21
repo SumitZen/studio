@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Table,
   TableBody,
@@ -30,34 +30,87 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { FilePlus2 } from 'lucide-react';
-import { credentials as initialCredentials } from '@/lib/data';
+import { FilePlus2, Upload } from 'lucide-react';
+import { useAuth } from '@/context/auth-context';
+import { collection, addDoc, onSnapshot, query, where } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { db, storage } from '@/lib/firebase';
+import { useToast } from '@/hooks/use-toast';
 
 type Credential = {
+  id: string;
   name: string;
   issuer: string;
   date: string;
   status: 'Verified' | 'Pending';
+  fileUrl?: string;
 };
 
 export default function CredentialsPage() {
-  const [credentials, setCredentials] =
-    useState<Credential[]>(initialCredentials);
+  const [credentials, setCredentials] = useState<Credential[]>([]);
   const [newCredential, setNewCredential] = useState({
     name: '',
     issuer: '',
     date: '',
   });
+  const [file, setFile] = useState<File | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const { user } = useAuth();
+  const { toast } = useToast();
 
-  const handleAddCredential = () => {
-    if (newCredential.name && newCredential.issuer && newCredential.date) {
-      setCredentials([
-        ...credentials,
-        { ...newCredential, status: 'Pending' },
-      ]);
-      setNewCredential({ name: '', issuer: '', date: '' });
-      setIsDialogOpen(false);
+  useEffect(() => {
+    if (user) {
+      const q = query(collection(db, 'credentials'), where('userId', '==', user.uid));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const userCredentials: Credential[] = [];
+        querySnapshot.forEach((doc) => {
+          userCredentials.push({ id: doc.id, ...doc.data() } as Credential);
+        });
+        setCredentials(userCredentials);
+      });
+      return () => unsubscribe();
+    }
+  }, [user]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleAddCredential = async () => {
+    if (!user || !newCredential.name || !newCredential.issuer || !newCredential.date) {
+        toast({ title: "Error", description: "Please fill in all fields.", variant: "destructive" });
+        return;
+    }
+
+    setIsUploading(true);
+    let fileUrl = '';
+    
+    try {
+        if (file) {
+            const storageRef = ref(storage, `credentials/${user.uid}/${file.name}`);
+            const uploadTask = await uploadBytes(storageRef, file);
+            fileUrl = await getDownloadURL(uploadTask.ref);
+        }
+
+        await addDoc(collection(db, 'credentials'), {
+            userId: user.uid,
+            ...newCredential,
+            status: 'Pending',
+            fileUrl,
+        });
+
+        setNewCredential({ name: '', issuer: '', date: '' });
+        setFile(null);
+        setIsDialogOpen(false);
+        toast({ title: "Success", description: "Credential added successfully." });
+    } catch (error) {
+        console.error("Error adding document: ", error);
+        toast({ title: "Error", description: "Failed to add credential.", variant: "destructive" });
+    } finally {
+        setIsUploading(false);
     }
   };
 
@@ -82,7 +135,7 @@ export default function CredentialsPage() {
             <DialogTrigger asChild>
               <Button>
                 <FilePlus2 className="mr-2" />
-                Upload Credential
+                Add Credential
               </Button>
             </DialogTrigger>
             <DialogContent>
@@ -132,12 +185,23 @@ export default function CredentialsPage() {
                     className="col-span-3"
                   />
                 </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="file" className="text-right">
+                    Document
+                  </Label>
+                  <div className="col-span-3">
+                     <Input id="file" type="file" onChange={handleFileChange} className="pt-1.5" />
+                     {file && <p className="text-xs mt-1 text-muted-foreground">{file.name}</p>}
+                  </div>
+                </div>
               </div>
               <DialogFooter>
                 <DialogClose asChild>
                   <Button variant="outline">Cancel</Button>
                 </DialogClose>
-                <Button onClick={handleAddCredential}>Add Credential</Button>
+                <Button onClick={handleAddCredential} disabled={isUploading}>
+                  {isUploading ? 'Adding...' : 'Add Credential'}
+                </Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -153,10 +217,17 @@ export default function CredentialsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {credentials.map((credential, index) => (
-                <TableRow key={`${credential.name}-${index}`}>
+              {credentials.map((credential) => (
+                <TableRow key={credential.id}>
                   <TableCell className="font-medium">
-                    <p>{credential.name}</p>
+                    <a 
+                      href={credential.fileUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className={credential.fileUrl ? "hover:underline" : ""}
+                    >
+                      {credential.name}
+                    </a>
                     <p className="text-muted-foreground sm:hidden">{credential.issuer}</p>
                   </TableCell>
                   <TableCell className="hidden sm:table-cell">{credential.issuer}</TableCell>
