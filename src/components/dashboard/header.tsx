@@ -40,7 +40,7 @@ export function DashboardHeader() {
   const navLinks = [
     { href: '/dashboard', label: 'Dashboard' },
     { href: '/dashboard/credentials', label: 'Credentials' },
-    { href: '#', label: 'Settings' },
+    { href: '/dashboard/settings', label: 'Settings' },
   ];
 
   return (
@@ -122,7 +122,9 @@ export function DashboardHeader() {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/dashboard/settings">Settings</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Logout</DropdownMenuItem>

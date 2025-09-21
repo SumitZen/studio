@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { User } from 'lucide-react';
 
-export default function ProfilePage() {
+export default function SettingsPage() {
   const [name, setName] = useState('Alex Doe');
   const [headline, setHeadline] = useState('Full Stack Developer');
   const [bio, setBio] = useState(
@@ -37,9 +37,9 @@ export default function ProfilePage() {
   return (
     <div className="flex flex-col gap-8">
        <div>
-        <h1 className="text-3xl font-bold tracking-tight">Profile</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
         <p className="text-muted-foreground">
-          Manage your personal information and portfolio settings.
+          Manage your account and profile settings.
         </p>
       </div>
       <Card className="shadow-lg">
