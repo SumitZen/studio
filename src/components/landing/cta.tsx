@@ -10,7 +10,7 @@ export function Cta() {
               Ready to Secure Your Future?
             </h2>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-primary-foreground/90">
-              Join Doclify today and take the first step towards a more organized and verifiable professional life. Sign up now and experience the future of credential management.
+              Join CredentialHub today and take the first step towards a more organized and verifiable professional life. Sign up now and experience the future of credential management.
             </p>
             <div className="mt-10">
               <Button

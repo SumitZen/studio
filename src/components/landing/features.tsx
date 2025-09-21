@@ -63,7 +63,7 @@ export function Features() {
             Everything You Need to Succeed
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Doclify provides a comprehensive suite of tools to manage and present your professional achievements.
+            CredentialHub provides a comprehensive suite of tools to manage and present your professional achievements.
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
