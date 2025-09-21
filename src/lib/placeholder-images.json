@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-dashboard",
-      "description": "A modern, tech-focused image of a data center, representing a secure digital hub for documents and credentials.",
-      "imageUrl": "https://picsum.photos/seed/datacenter/1200/800",
-      "imageHint": "data center"
+      "description": "A sleek, modern image showing a smartphone with a secure digital credential on the screen, against a dark, tech-themed background.",
+      "imageUrl": "https://picsum.photos/seed/credential-app/1200/800",
+      "imageHint": "secure document mobile"
     },
     {
       "id": "trust-security-illustration",
