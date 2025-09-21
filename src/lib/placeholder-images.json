@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-dashboard",
-      "description": "A modern dashboard showcasing digital certificates and credentials.",
-      "imageUrl": "https://picsum.photos/seed/credentialhub-hero/1200/800",
-      "imageHint": "dashboard interface"
+      "description": "An abstract, modern tech illustration representing secure document management.",
+      "imageUrl": "https://picsum.photos/seed/secure-docs/1200/800",
+      "imageHint": "secure documents abstract"
     },
     {
       "id": "trust-security-illustration",

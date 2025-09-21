@@ -10,6 +10,7 @@ import {
   Search,
   ShoppingCart,
   Users,
+  LayoutGrid,
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -46,17 +47,24 @@ export function DashboardHeader() {
         <SheetContent side="left" className="sm:max-w-xs">
           <nav className="grid gap-6 text-lg font-medium">
             <Link
-              href="#"
+              href="/"
               className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
             >
               <Logo />
               <span className="sr-only">CredentialHub</span>
             </Link>
-            <Link
-              href="#"
+             <Link
+              href="/"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <Home className="h-5 w-5" />
+              Home
+            </Link>
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-4 px-2.5 text-foreground"
+            >
+              <LayoutGrid className="h-5 w-5" />
               Dashboard
             </Link>
           </nav>
